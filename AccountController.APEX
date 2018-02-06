@@ -16,8 +16,7 @@ global with sharing class AccountsController {
         
     @HttpPost
     global static AccountDetailWrapper doPost(String Name, String Phone, String Website, String AccountNumber) {
-        RestRequest req = RestContext.request;
-        RestResponse res = RestContext.response;
+        
         AccountDetailWrapper response = new AccountDetailWrapper();       
 
         Account acct = new Account();
