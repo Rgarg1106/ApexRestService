@@ -37,7 +37,6 @@ global with sharing class AccountsController {
     @HttpPut
     global static AccountDetailWrapper doPut()
     {        
-        RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
         
 		AccountDetailWrapper response = new AccountDetailWrapper();
