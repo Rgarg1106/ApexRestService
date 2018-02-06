@@ -1,0 +1,213 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Salesforce"
+  },
+  "host": "rgarglightningcomp1106-dev-ed.lightning.force.com",
+  "basePath": "/services/apexrest/v2/",
+  "tags": [
+    {
+      "name": "Account",
+      "description": "Everything you want to test",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/accounts": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Add a new Account",
+        "operationId": "AddanAccount",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Account object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountDetailWrapper"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Updated Account",
+        "operationId": "UpdateanAccount",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated Account object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountDetailWrapper"
+            }
+          },
+          "400": {
+            "description": "Invalid Account supplied"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts/{Id}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get Account details",
+        "operationId": "FindAccountByAccountId",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Enter Identity of User",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Deletes an Account",
+        "operationId": "DeleteAccount",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Account id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountDetailWrapper"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Account": {
+      "type": "object",
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "AccountNumber": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "Website": {
+          "type": "string"
+        }
+      }
+    },
+    "AccountDetailWrapper": {
+      "type": "object",
+      "properties": {
+        "UpdatedId": {
+          "type": "string"
+        },
+        "UpdatedName": {
+          "type": "string"
+        },
+        "UpdatedAccNumber": {
+          "type": "string"
+        },
+        "UpdatedPhone": {
+          "type": "string"
+        },
+        "UpdatedWebsite": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
